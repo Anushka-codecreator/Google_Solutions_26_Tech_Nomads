@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "Need": {
+      "title": "Community Need",
+      "description": "A specific humanitarian or community requirement.",
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          }
+        },
+        "category": { "type": "string", "enum": ["medical", "food", "water", "infrastructure", "education", "other"] },
+        "priorityScore": { "type": "number", "description": "AI-calculated priority from 0-100" },
+        "status": { "type": "string", "enum": ["reported", "analyzed", "assigned", "in-progress", "resolved"] },
+        "population": { "type": "integer" },
+        "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "reportedBy": { "type": "string" },
+        "reportedAt": { "type": "string", "format": "date-time" },
+        "assignedVolunteerId": { "type": "string" }
+      },
+      "required": ["description", "category", "status", "reportedAt"]
+    },
+    "Volunteer": {
+      "title": "Volunteer Profile",
+      "description": "A community member ready to help.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "available": { "type": "boolean" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" }
+          }
+        },
+        "lastActive": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "available"]
+    }
+  },
+  "firestore": {
+    "/needs/{needId}": {
+      "schema": "Need",
+      "description": "The master collection of all community needs."
+    },
+    "/volunteers/{volunteerId}": {
+      "schema": "Volunteer",
+      "description": "Profiles of registered volunteers."
+    }
+  }
+}

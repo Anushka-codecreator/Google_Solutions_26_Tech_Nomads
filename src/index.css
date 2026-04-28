@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --bg: #F8F9FA;
+  --card: #FFFFFF;
+  --accent: #2563EB;
+  --urgent: #DC2626;
+  --warning: #F59E0B;
+  --safe: #10B981;
+}
+
+body {
+  background-color: var(--bg);
+  @apply text-slate-900;
+}
+
+.technical-border {
+  @apply border border-slate-200;
+}
+
+.data-row {
+  @apply transition-all duration-200 hover:bg-slate-50 cursor-pointer;
+}
+
+/* Heatmap pulse effect */
+@keyframes pulse-ring {
+  0% { transform: scale(0.3); opacity: 0.8; }
+  80%, 100% { opacity: 0; }
+}
+
+.pulse-dot {
+  @apply relative rounded-full bg-red-500;
+}
+
+.pulse-dot::after {
+  content: '';
+  @apply absolute -inset-2 rounded-full bg-red-500 animate-[pulse-ring_1.2s_cubic-bezier(0.45,0.05,0.55,0.95)_infinite];
+}
+

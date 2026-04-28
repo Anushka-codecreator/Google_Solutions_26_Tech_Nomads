@@ -1,0 +1,13 @@
+{
+  "name": "Sahyog - AI Community Pulse",
+  "description": "An AI-powered community needs aggregator and volunteer matching platform that turns scattered data into structured humanitarian action.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "AI-powered need scoring",
+    "Real-time resource allocation",
+    "Voice-to-Need reporting"
+  ]
+}
